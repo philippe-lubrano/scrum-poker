@@ -2,6 +2,14 @@
 
 A real-time Planning Poker (Scrum Poker) application built with React, TypeScript, Tailwind CSS, and Firebase.
 
+## Screenshots
+
+### Light Mode
+![Home Page Light Mode](https://github.com/user-attachments/assets/39c3c94e-fe87-4576-b4f4-c7bc1ee6d44f)
+
+### Dark Mode
+![Home Page Dark Mode](https://github.com/user-attachments/assets/68f1affa-c72d-4607-bf65-be0623351505)
+
 ## Features
 
 - **Real-time Collaboration**: Uses Firebase Realtime Database for instant synchronization
@@ -52,6 +60,8 @@ cp .env.example .env
 ```
 
 ### Firebase Setup
+
+**⚠️ Important:** The application requires valid Firebase credentials to function. The default credentials in `.env.example` are placeholders and will not work. You must create your own Firebase project and configure it.
 
 1. Go to [Firebase Console](https://console.firebase.google.com/)
 2. Create a new project or use an existing one

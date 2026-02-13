@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { ref, onValue, set, update, remove, push } from 'firebase/database';
 import { database } from '../firebase';
-import type { SessionData, Player, Session, VoteValue, LocalPlayer } from '../types';
+import type { SessionData, Player, VoteValue, LocalPlayer } from '../types';
 
 export function useSession(sessionId: string, localPlayer: LocalPlayer | null) {
   const [sessionData, setSessionData] = useState<SessionData | null>(null);
@@ -11,7 +11,6 @@ export function useSession(sessionId: string, localPlayer: LocalPlayer | null) {
   // Listen to session data in real-time
   useEffect(() => {
     if (!sessionId) {
-      setLoading(false);
       return;
     }
 
@@ -126,7 +125,7 @@ export function useSession(sessionId: string, localPlayer: LocalPlayer | null) {
   const resetVotes = useCallback(async () => {
     if (!sessionId || !sessionData) return;
 
-    const updates: Record<string, any> = {
+    const updates: Record<string, VoteValue | number | boolean | null> = {
       [`sessions/${sessionId}/session/votesRevealed`]: false,
       [`sessions/${sessionId}/session/currentRound`]: (sessionData.session.currentRound || 0) + 1,
     };
