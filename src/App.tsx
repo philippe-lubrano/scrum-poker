@@ -5,7 +5,7 @@ import { DarkModeToggle } from './components/DarkModeToggle';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/scrum-poker">
       <DarkModeToggle />
       <Routes>
         <Route path="/" element={<HomePage />} />
