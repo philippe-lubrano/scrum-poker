@@ -61,7 +61,7 @@ export function useSession(sessionId: string, localPlayer: LocalPlayer | null) {
   const createSession = useCallback(async (adminName: string): Promise<string> => {
     const newSessionRef = push(ref(database, 'sessions'));
     const sessionId = newSessionRef.key!;
-    const adminId = `player_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    const adminId = `player_${Date.now()}_${Math.random().toString(36).slice(2, 11)}`;
 
     const newSession: SessionData = {
       session: {
@@ -90,7 +90,7 @@ export function useSession(sessionId: string, localPlayer: LocalPlayer | null) {
   const joinSession = useCallback(async (playerName: string): Promise<string> => {
     if (!sessionId) throw new Error('Session ID is required');
 
-    const playerId = `player_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    const playerId = `player_${Date.now()}_${Math.random().toString(36).slice(2, 11)}`;
     const playerRef = ref(database, `sessions/${sessionId}/players/${playerId}`);
 
     const newPlayer: Player = {

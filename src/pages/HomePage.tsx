@@ -12,6 +12,7 @@ export const HomePage: React.FC = () => {
   const handleCreateSession = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim()) {
+      // TODO: Replace alert with inline validation message
       alert('Please enter your name');
       return;
     }
@@ -21,7 +22,7 @@ export const HomePage: React.FC = () => {
       const newSessionId = await createSession(name);
       
       // Store admin info
-      const adminId = `player_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+      const adminId = `player_${Date.now()}_${Math.random().toString(36).slice(2, 11)}`;
       const player = {
         id: adminId,
         name,
@@ -32,6 +33,7 @@ export const HomePage: React.FC = () => {
       navigate(`/session/${newSessionId}`);
     } catch (error) {
       console.error('Error creating session:', error);
+      // TODO: Replace alert with toast notification
       alert('Failed to create session. Please try again.');
     } finally {
       setLoading(false);
@@ -41,6 +43,7 @@ export const HomePage: React.FC = () => {
   const handleJoinSession = (e: React.FormEvent) => {
     e.preventDefault();
     if (!sessionId.trim()) {
+      // TODO: Replace alert with inline validation message
       alert('Please enter a session ID');
       return;
     }

@@ -32,6 +32,7 @@ export const SessionPage: React.FC = () => {
     }
 
     if (!localPlayer && !loading && sessionData) {
+      // TODO: Replace prompt with modal dialog component
       const name = prompt('Enter your name:');
       if (!name) {
         navigate('/');
@@ -67,6 +68,7 @@ export const SessionPage: React.FC = () => {
   const copySessionLink = () => {
     const url = window.location.href;
     navigator.clipboard.writeText(url);
+    // TODO: Replace alert with toast notification
     alert('Session link copied to clipboard!');
   };
 
